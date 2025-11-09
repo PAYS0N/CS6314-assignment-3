@@ -51,12 +51,64 @@ function submitStaysForm(e) {
     }
     else {
         const staysOutput = document.querySelector("#stays-output")
+        const rooms = calculateRooms(adults, children)
         staysOutput.textContent = 
             "City: " + city +
             "\nCheck-in: " + checkin +
             "\nCheck-out: " + checkout +
             "\nAdults: " + adults + ", Children: " + children + ", Infants: " + infants +
-            "\nRooms needed: " + calculateRooms(adults, children);
-
+            "\nRooms needed: " + rooms;
+        displayAvailableHotels(city, checkin, checkout)
     }
+}
+
+async function displayAvailableHotels(city, checkin, checkout) {
+    const strCityName = city.trim().split(",")[0]
+    const xmlHotels = await getHotels()
+
+    xmlHotels.hotels.hotel.forEach(hotel => {
+        //logic to check if hotel is available
+        if (hotel.city[0] === strCityName && hotel.availableRooms[0] > 0) {
+            revealHotelLabels()
+            const htmlHotel = createHotelObj(hotel.hotelId[0], hotel.name[0], strCityName, checkin, checkout, hotel.pricePerNight[0])
+            console.log(htmlHotel)
+            document.querySelector("#hotels-output").appendChild(htmlHotel)
+        }
+        else {
+            // console.log(hotel.city[0])
+        }
+    });
+
+}
+
+async function getHotels() {
+    try {
+        const response = await fetch('/api/hotels')
+
+        const xmlHotels = await response.json()
+        return xmlHotels
+    } catch (err) {
+        console.error('Error fetching hotels:', err)
+    }
+}
+
+function createHotelObj(id, name, city, checkin, checkout, price) {
+    const trHotel = document.createElement('tr')
+    trHotel.appendChild(createTextCell(id))
+    trHotel.appendChild(createTextCell(name))
+    trHotel.appendChild(createTextCell(city))
+    trHotel.appendChild(createTextCell(checkin))
+    trHotel.appendChild(createTextCell(checkout))
+    trHotel.appendChild(createTextCell(price))
+    return trHotel
+}
+
+function createTextCell(text) {
+    const divText = document.createElement('td')
+    divText.textContent = text
+    return divText
+}
+
+function revealHotelLabels() {
+    document.querySelector("#hotels-table").classList.remove("hidden")
 }

@@ -79,6 +79,15 @@ body {
     white-space: pre;
 }
 
+#hotels-table {
+    border: 2px solid black;
+}
+
+#hotels-table td {
+    padding-left: .5rem;
+    padding-right: .5rem;
+}
+
 #side {
     padding: 5rem;
 
@@ -126,5 +135,9 @@ body {
 }
 
 #settings-dialog.hidden{
+    display: none;
+}
+
+.hidden{
     display: none;
 }
