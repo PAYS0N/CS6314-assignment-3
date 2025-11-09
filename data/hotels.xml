@@ -1,74 +1,74 @@
 <hotels>
   <hotel>
     <hotelId>1</hotelId>
-    <name>Grand Texas Hotel</name>
+    <name>Hotel Texas</name>
     <city>Austin</city>
     <availableRooms>5</availableRooms>
-    <date>2024-09-15</date>
+    <date>2025-11-09</date>
     <pricePerNight>120</pricePerNight>
   </hotel>
   <hotel>
     <hotelId>2</hotelId>
-    <name>Lone Star Inn</name>
+    <name>Antlers Hotel</name>
     <city>Dallas</city>
     <availableRooms>8</availableRooms>
-    <date>2024-09-20</date>
+    <date>2025-11-09</date>
     <pricePerNight>100</pricePerNight>
   </hotel>
   <hotel>
     <hotelId>3</hotelId>
-    <name>Houston Heights Hotel</name>
+    <name>Hampton Inn</name>
     <city>Houston</city>
     <availableRooms>10</availableRooms>
-    <date>2024-10-05</date>
+    <date>2025-11-09</date>
     <pricePerNight>95</pricePerNight>
   </hotel>
   <hotel>
     <hotelId>4</hotelId>
-    <name>Riverwalk Resort</name>
+    <name>Hilton Hotels</name>
     <city>San Antonio</city>
     <availableRooms>6</availableRooms>
-    <date>2024-09-25</date>
+    <date>2025-11-09</date>
     <pricePerNight>110</pricePerNight>
   </hotel>
   <hotel>
     <hotelId>5</hotelId>
-    <name>Bayou City Lodge</name>
+    <name>Motel6</name>
     <city>Houston</city>
     <availableRooms>7</availableRooms>
-    <date>2024-10-12</date>
+    <date>2025-11-09</date>
     <pricePerNight>105</pricePerNight>
   </hotel>
   <hotel>
     <hotelId>6</hotelId>
-    <name>Alamo Suites</name>
+    <name>Days Inn</name>
     <city>San Antonio</city>
     <availableRooms>9</availableRooms>
-    <date>2024-09-30</date>
+    <date>2025-11-09</date>
     <pricePerNight>115</pricePerNight>
   </hotel>
   <hotel>
     <hotelId>7</hotelId>
-    <name>California Dream Inn</name>
+    <name>Hyatt Regency</name>
     <city>Los Angeles</city>
     <availableRooms>4</availableRooms>
-    <date>2024-09-18</date>
+    <date>2025-11-09</date>
     <pricePerNight>140</pricePerNight>
   </hotel>
   <hotel>
     <hotelId>8</hotelId>
-    <name>Bayfront Hotel</name>
+    <name>Westin</name>
     <city>San Francisco</city>
     <availableRooms>5</availableRooms>
-    <date>2024-10-01</date>
+    <date>2025-11-09</date>
     <pricePerNight>150</pricePerNight>
   </hotel>
   <hotel>
     <hotelId>9</hotelId>
-    <name>Golden Gate Suites</name>
+    <name>Comfort Suites</name>
     <city>San Francisco</city>
     <availableRooms>6</availableRooms>
-    <date>2024-10-10</date>
+    <date>2025-11-09</date>
     <pricePerNight>155</pricePerNight>
   </hotel>
   <hotel>
@@ -76,87 +76,87 @@
     <name>Hollywood Stay</name>
     <city>Los Angeles</city>
     <availableRooms>7</availableRooms>
-    <date>2024-09-28</date>
+    <date>2025-11-09</date>
     <pricePerNight>145</pricePerNight>
   </hotel>
   <hotel>
     <hotelId>11</hotelId>
-    <name>San Diego Shores</name>
+    <name>Quality Inn</name>
     <city>San Diego</city>
     <availableRooms>8</availableRooms>
-    <date>2024-10-15</date>
+    <date>2025-11-09</date>
     <pricePerNight>135</pricePerNight>
   </hotel>
   <hotel>
     <hotelId>12</hotelId>
-    <name>Pacific Coast Inn</name>
+    <name>Balboa Inn</name>
     <city>San Diego</city>
     <availableRooms>5</availableRooms>
-    <date>2024-10-20</date>
+    <date>2025-11-09</date>
     <pricePerNight>130</pricePerNight>
   </hotel>
   <hotel>
     <hotelId>13</hotelId>
-    <name>Lone Star Suites</name>
+    <name>Super 8</name>
     <city>Dallas</city>
     <availableRooms>6</availableRooms>
-    <date>2024-09-22</date>
+    <date>2025-11-09</date>
     <pricePerNight>110</pricePerNight>
   </hotel>
   <hotel>
     <hotelId>14</hotelId>
-    <name>Capital City Hotel</name>
+    <name>Omni Hotels</name>
     <city>Austin</city>
     <availableRooms>7</availableRooms>
-    <date>2024-09-27</date>
+    <date>2025-11-09</date>
     <pricePerNight>125</pricePerNight>
   </hotel>
   <hotel>
     <hotelId>15</hotelId>
-    <name>Sunset Boulevard Inn</name>
+    <name>Carlton Hotel</name>
     <city>Los Angeles</city>
     <availableRooms>6</availableRooms>
-    <date>2024-10-05</date>
+    <date>2025-11-09</date>
     <pricePerNight>150</pricePerNight>
   </hotel>
   <hotel>
     <hotelId>16</hotelId>
-    <name>Mission City Hotel</name>
-    <city>San Antonio</city>
+    <name>Key Route Inn</name>
+    <city>Sacramento</city>
     <availableRooms>4</availableRooms>
-    <date>2024-09-29</date>
+    <date>2025-11-09</date>
     <pricePerNight>120</pricePerNight>
   </hotel>
   <hotel>
     <hotelId>17</hotelId>
-    <name>River City Inn</name>
-    <city>San Antonio</city>
+    <name>Sonny's Inn</name>
+    <city>Lexington</city>
     <availableRooms>5</availableRooms>
-    <date>2024-10-08</date>
+    <date>2025-11-09</date>
     <pricePerNight>115</pricePerNight>
   </hotel>
   <hotel>
     <hotelId>18</hotelId>
-    <name>Bay Area Suites</name>
+    <name>Oyo Rooms</name>
     <city>San Francisco</city>
     <availableRooms>7</availableRooms>
-    <date>2024-10-12</date>
+    <date>2025-11-09</date>
     <pricePerNight>160</pricePerNight>
   </hotel>
   <hotel>
     <hotelId>19</hotelId>
-    <name>Alamo City Lodge</name>
+    <name>Aloft</name>
     <city>San Antonio</city>
     <availableRooms>6</availableRooms>
-    <date>2024-09-26</date>
+    <date>2025-11-09</date>
     <pricePerNight>118</pricePerNight>
   </hotel>
   <hotel>
     <hotelId>20</hotelId>
-    <name>Mission Bay Hotel</name>
+    <name>Fairfield Inn</name>
     <city>San Diego</city>
     <availableRooms>5</availableRooms>
-    <date>2024-10-18</date>
+    <date>2025-11-09</date>
     <pricePerNight>132</pricePerNight>
   </hotel>
 </hotels>
