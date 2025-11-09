@@ -1,0 +1,162 @@
+<hotels>
+  <hotel>
+    <hotelId>1</hotelId>
+    <name>Grand Texas Hotel</name>
+    <city>Austin</city>
+    <availableRooms>5</availableRooms>
+    <date>2024-09-15</date>
+    <pricePerNight>120</pricePerNight>
+  </hotel>
+  <hotel>
+    <hotelId>2</hotelId>
+    <name>Lone Star Inn</name>
+    <city>Dallas</city>
+    <availableRooms>8</availableRooms>
+    <date>2024-09-20</date>
+    <pricePerNight>100</pricePerNight>
+  </hotel>
+  <hotel>
+    <hotelId>3</hotelId>
+    <name>Houston Heights Hotel</name>
+    <city>Houston</city>
+    <availableRooms>10</availableRooms>
+    <date>2024-10-05</date>
+    <pricePerNight>95</pricePerNight>
+  </hotel>
+  <hotel>
+    <hotelId>4</hotelId>
+    <name>Riverwalk Resort</name>
+    <city>San Antonio</city>
+    <availableRooms>6</availableRooms>
+    <date>2024-09-25</date>
+    <pricePerNight>110</pricePerNight>
+  </hotel>
+  <hotel>
+    <hotelId>5</hotelId>
+    <name>Bayou City Lodge</name>
+    <city>Houston</city>
+    <availableRooms>7</availableRooms>
+    <date>2024-10-12</date>
+    <pricePerNight>105</pricePerNight>
+  </hotel>
+  <hotel>
+    <hotelId>6</hotelId>
+    <name>Alamo Suites</name>
+    <city>San Antonio</city>
+    <availableRooms>9</availableRooms>
+    <date>2024-09-30</date>
+    <pricePerNight>115</pricePerNight>
+  </hotel>
+  <hotel>
+    <hotelId>7</hotelId>
+    <name>California Dream Inn</name>
+    <city>Los Angeles</city>
+    <availableRooms>4</availableRooms>
+    <date>2024-09-18</date>
+    <pricePerNight>140</pricePerNight>
+  </hotel>
+  <hotel>
+    <hotelId>8</hotelId>
+    <name>Bayfront Hotel</name>
+    <city>San Francisco</city>
+    <availableRooms>5</availableRooms>
+    <date>2024-10-01</date>
+    <pricePerNight>150</pricePerNight>
+  </hotel>
+  <hotel>
+    <hotelId>9</hotelId>
+    <name>Golden Gate Suites</name>
+    <city>San Francisco</city>
+    <availableRooms>6</availableRooms>
+    <date>2024-10-10</date>
+    <pricePerNight>155</pricePerNight>
+  </hotel>
+  <hotel>
+    <hotelId>10</hotelId>
+    <name>Hollywood Stay</name>
+    <city>Los Angeles</city>
+    <availableRooms>7</availableRooms>
+    <date>2024-09-28</date>
+    <pricePerNight>145</pricePerNight>
+  </hotel>
+  <hotel>
+    <hotelId>11</hotelId>
+    <name>San Diego Shores</name>
+    <city>San Diego</city>
+    <availableRooms>8</availableRooms>
+    <date>2024-10-15</date>
+    <pricePerNight>135</pricePerNight>
+  </hotel>
+  <hotel>
+    <hotelId>12</hotelId>
+    <name>Pacific Coast Inn</name>
+    <city>San Diego</city>
+    <availableRooms>5</availableRooms>
+    <date>2024-10-20</date>
+    <pricePerNight>130</pricePerNight>
+  </hotel>
+  <hotel>
+    <hotelId>13</hotelId>
+    <name>Lone Star Suites</name>
+    <city>Dallas</city>
+    <availableRooms>6</availableRooms>
+    <date>2024-09-22</date>
+    <pricePerNight>110</pricePerNight>
+  </hotel>
+  <hotel>
+    <hotelId>14</hotelId>
+    <name>Capital City Hotel</name>
+    <city>Austin</city>
+    <availableRooms>7</availableRooms>
+    <date>2024-09-27</date>
+    <pricePerNight>125</pricePerNight>
+  </hotel>
+  <hotel>
+    <hotelId>15</hotelId>
+    <name>Sunset Boulevard Inn</name>
+    <city>Los Angeles</city>
+    <availableRooms>6</availableRooms>
+    <date>2024-10-05</date>
+    <pricePerNight>150</pricePerNight>
+  </hotel>
+  <hotel>
+    <hotelId>16</hotelId>
+    <name>Mission City Hotel</name>
+    <city>San Antonio</city>
+    <availableRooms>4</availableRooms>
+    <date>2024-09-29</date>
+    <pricePerNight>120</pricePerNight>
+  </hotel>
+  <hotel>
+    <hotelId>17</hotelId>
+    <name>River City Inn</name>
+    <city>San Antonio</city>
+    <availableRooms>5</availableRooms>
+    <date>2024-10-08</date>
+    <pricePerNight>115</pricePerNight>
+  </hotel>
+  <hotel>
+    <hotelId>18</hotelId>
+    <name>Bay Area Suites</name>
+    <city>San Francisco</city>
+    <availableRooms>7</availableRooms>
+    <date>2024-10-12</date>
+    <pricePerNight>160</pricePerNight>
+  </hotel>
+  <hotel>
+    <hotelId>19</hotelId>
+    <name>Alamo City Lodge</name>
+    <city>San Antonio</city>
+    <availableRooms>6</availableRooms>
+    <date>2024-09-26</date>
+    <pricePerNight>118</pricePerNight>
+  </hotel>
+  <hotel>
+    <hotelId>20</hotelId>
+    <name>Mission Bay Hotel</name>
+    <city>San Diego</city>
+    <availableRooms>5</availableRooms>
+    <date>2024-10-18</date>
+    <pricePerNight>132</pricePerNight>
+  </hotel>
+</hotels>
