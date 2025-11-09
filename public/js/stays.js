@@ -58,11 +58,13 @@ function submitStaysForm(e) {
             "\nCheck-out: " + checkout +
             "\nAdults: " + adults + ", Children: " + children + ", Infants: " + infants +
             "\nRooms needed: " + rooms;
-        displayAvailableHotels(city, checkin, checkout)
+        displayAvailableHotels(city, checkin, checkout, rooms, adults, children, infants)
     }
 }
 
-async function displayAvailableHotels(city, checkin, checkout) {
+async function displayAvailableHotels(city, checkin, checkout, rooms, adults, children, infants) {
+    document.querySelector("#hotels-output").innerHTML = ""
+
     const strCityName = city.trim().split(",")[0]
     const xmlHotels = await getHotels()
 
@@ -70,8 +72,7 @@ async function displayAvailableHotels(city, checkin, checkout) {
         //logic to check if hotel is available
         if (hotel.city[0] === strCityName && hotel.availableRooms[0] > 0) {
             revealHotelLabels()
-            const htmlHotel = createHotelObj(hotel.hotelId[0], hotel.name[0], strCityName, checkin, checkout, hotel.pricePerNight[0])
-            console.log(htmlHotel)
+            const htmlHotel = createHotelObj(hotel.hotelId[0], hotel.name[0], strCityName, checkin, checkout, hotel.pricePerNight[0], hotel.availableRooms[0], rooms, adults, children, infants)
             document.querySelector("#hotels-output").appendChild(htmlHotel)
         }
         else {
@@ -92,7 +93,7 @@ async function getHotels() {
     }
 }
 
-function createHotelObj(id, name, city, checkin, checkout, price) {
+function createHotelObj(id, name, city, checkin, checkout, price, availableRooms, roomsNeeded, adults, children, infants) {
     const trHotel = document.createElement('tr')
     trHotel.appendChild(createTextCell(id))
     trHotel.appendChild(createTextCell(name))
@@ -100,6 +101,17 @@ function createHotelObj(id, name, city, checkin, checkout, price) {
     trHotel.appendChild(createTextCell(checkin))
     trHotel.appendChild(createTextCell(checkout))
     trHotel.appendChild(createTextCell(price))
+    trHotel.appendChild(createTextCell(availableRooms))
+    const cartCell = createButtonCell("Add to cart")
+    cartCell.addEventListener("click", () => {
+        if (availableRooms < roomsNeeded) {
+            alert("You require too many rooms. Reduce guests or pick a different hotel.")
+        }
+        else {
+            addHotelToCart(id, name, city, checkin, checkout, price, roomsNeeded, adults, children, infants)
+        }
+    })
+    trHotel.appendChild(cartCell)
     return trHotel
 }
 
@@ -109,6 +121,36 @@ function createTextCell(text) {
     return divText
 }
 
+function createButtonCell(text) {
+    const tdText = document.createElement('td')
+    const buttonText = document.createElement('button')
+    buttonText.textContent = text
+    tdText.appendChild(buttonText)
+    return tdText
+}
+
 function revealHotelLabels() {
     document.querySelector("#hotels-table").classList.remove("hidden")
+}
+
+function addHotelToCart(id, name, city, checkin, checkout, price, rooms, adults, children, infants) {    
+    const cartItem = {
+        type: 'hotel',
+        hotelId: id,
+        hotelName: name,
+        city: city,
+        checkin: checkin,
+        checkout: checkout,
+        rooms: rooms,
+        adults: adults,
+        children: children,
+        infants: infants,
+        pricePerNight: price,
+    };
+    
+    let cart = JSON.parse(sessionStorage.getItem('cart')) || [];
+    cart.push(cartItem);
+    sessionStorage.setItem('cart', JSON.stringify(cart));
+
+    alert('Hotel added to cart!');
 }
