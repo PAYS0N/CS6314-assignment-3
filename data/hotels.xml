@@ -108,7 +108,7 @@
     <hotelId>14</hotelId>
     <name>Omni Hotels</name>
     <city>Austin</city>
-    <availableRooms>3</availableRooms>
+    <availableRooms>1</availableRooms>
     <date>2025-11-09</date>
     <pricePerNight>125</pricePerNight>
   </hotel>

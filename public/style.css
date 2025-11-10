@@ -73,6 +73,8 @@ body {
 
 #passenger-icon {
     cursor: pointer;
+    height: 10%;
+    width: auto;
 }
 
 .form-output {

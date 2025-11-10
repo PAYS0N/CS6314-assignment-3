@@ -118,5 +118,20 @@
     "rooms": 4,
     "pricePerNight": "125",
     "totalPrice": 500
+  },
+  {
+    "userId": "user-1762733633487-910",
+    "bookingNumber": 1762734077422,
+    "hotelId": "14",
+    "hotelName": "Omni Hotels",
+    "city": "Austin",
+    "checkin": "2024-09-26",
+    "checkout": "2024-10-22",
+    "adults": "1",
+    "children": "3",
+    "infants": "2",
+    "rooms": 2,
+    "pricePerNight": "125",
+    "totalPrice": 250
   }
 ]
