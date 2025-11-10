@@ -168,7 +168,28 @@ app.post('/api/flight-bookings', (req, res) => {
     res.json({ success: true });
 });
 
-
+app.get('/api/carbookings/:userId', (req, res) => {
+    const userId = req.params.userId;
+    const xmlFile = './data/carbookings.xml';
+    
+    if (!fs.existsSync(xmlFile)) {
+        return res.json({ bookings: { booking: [] } });
+    }
+    
+    const xmlData = fs.readFileSync(xmlFile, 'utf8');
+    xml2js.parseString(xmlData, (err, result) => {
+        if (err) return res.status(500).json({ error: err });
+        
+        if (result.bookings && result.bookings.booking) {
+            const userBookings = result.bookings.booking.filter(
+                b => b.userId && b.userId[0] === userId
+            );
+            res.json({ bookings: { booking: userBookings } });
+        } else {
+            res.json({ bookings: { booking: [] } });
+        }
+    });
+});
 
 // Start server
 app.listen(PORT, () => {

@@ -25,6 +25,10 @@
         <checkin>2024-10-24</checkin>
         <checkout>2024-11-20</checkout>
       </period>
+      <period>
+        <checkin>2024-10-02</checkin>
+        <checkout>2024-11-09</checkout>
+      </period>
     </bookedPeriods>
   </car>
   <car>

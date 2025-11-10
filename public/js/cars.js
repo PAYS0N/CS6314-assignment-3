@@ -1,5 +1,6 @@
-window.addEventListener("load", () => {
+window.addEventListener("load", async () => {
     developDom()
+    await autofillFromLastBooking();
     setupContactListeners()
 });
 
@@ -249,6 +250,7 @@ function revealCarLabels() {
 function addCarToCart(id, city, carType, checkin, checkout, price) {    
     const cartItem = {
         type: 'car',
+        userId: getUserId(),
         carId: id,
         city: city,
         carType: carType,
@@ -264,3 +266,41 @@ function addCarToCart(id, city, carType, checkin, checkout, price) {
     alert('Car added to cart!');
 }
 
+function getUserId() {
+    let userId = sessionStorage.getItem('userId');
+    if (!userId) {
+        userId = 'user-' + Date.now() + '-' + Math.floor(Math.random() * 1000);
+        sessionStorage.setItem('userId', userId);
+    }
+    return userId;
+}
+
+async function getLastBooking(userId) {
+    try {
+        const response = await fetch(`/api/carbookings/${userId}`);
+        const data = await response.json();
+        const bookings = data.bookings.booking || [];
+        
+        if (bookings.length > 0) {
+            // Return the last booking
+            return bookings[bookings.length - 1];
+        }
+        return null;
+    } catch (err) {
+        console.error('Error fetching last booking:', err);
+        return null;
+    }
+}
+
+async function autofillFromLastBooking() {
+    const userId = getUserId();
+    const lastBooking = await getLastBooking(userId);
+    
+    if (lastBooking) {
+        const city = lastBooking.city[0];
+        const carType = lastBooking.carType[0];
+        
+        document.getElementById('city').value = city + ', TX'; // Assuming state
+        document.getElementById('car-type').value = carType;
+    }
+}
