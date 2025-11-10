@@ -1,18 +1,19 @@
 [
   {
-    "userId": "user-1762733633487-910",
-    "bookingNumber": 1762733772209,
-    "hotelId": "1",
-    "hotelName": "Hotel Texas",
-    "city": "Austin",
-    "checkin": "2024-09-26",
-    "checkout": "2024-10-15",
-    "adults": "4",
-    "children": "3",
-    "infants": "2",
-    "rooms": 4,
-    "pricePerNight": "120",
-    "totalPrice": 480
+    "userId": "user-1762749420359-341",
+    "bookingNumber": 1762749421099,
+    "type": "hotel",
+    "hotelId": "3",
+    "hotelName": "Hampton Inn",
+    "city": "Houston",
+    "checkin": "2024-11-12",
+    "checkout": "2024-11-19",
+    "adults": "1",
+    "children": "0",
+    "infants": "0",
+    "rooms": 1,
+    "pricePerNight": "95",
+    "totalPrice": 665
   },
   {
     "userId": "user-1762733633487-910",
@@ -239,5 +240,21 @@
     "rooms": 4,
     "pricePerNight": "125",
     "totalPrice": 500
+  },
+  {
+    "userId": "user-1762743908855-241",
+    "bookingNumber": 1762751463969,
+    "type": "hotel",
+    "hotelId": "14",
+    "hotelName": "Omni Hotels",
+    "city": "Austin",
+    "checkin": "2024-10-23",
+    "checkout": "2024-11-13",
+    "adults": "1",
+    "children": "0",
+    "infants": "0",
+    "rooms": 1,
+    "pricePerNight": "125",
+    "totalPrice": 2625
   }
 ]

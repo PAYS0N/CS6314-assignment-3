@@ -20,7 +20,7 @@
     <hotelId>3</hotelId>
     <name>Hampton Inn</name>
     <city>Houston</city>
-    <availableRooms>10</availableRooms>
+    <availableRooms>7</availableRooms>
     <date>2025-11-09</date>
     <pricePerNight>95</pricePerNight>
   </hotel>
@@ -52,7 +52,7 @@
     <hotelId>7</hotelId>
     <name>Hyatt Regency</name>
     <city>Los Angeles</city>
-    <availableRooms>4</availableRooms>
+    <availableRooms>3</availableRooms>
     <date>2025-11-09</date>
     <pricePerNight>140</pricePerNight>
   </hotel>
@@ -108,7 +108,7 @@
     <hotelId>14</hotelId>
     <name>Omni Hotels</name>
     <city>Austin</city>
-    <availableRooms>1091</availableRooms>
+    <availableRooms>1090</availableRooms>
     <date>2025-11-09</date>
     <pricePerNight>125</pricePerNight>
   </hotel>

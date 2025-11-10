@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<bookings>
+  <booking>
+    <userId>user-1762749420359-341</userId>
+    <bookingNumber>1762749861920</bookingNumber>
+    <carId>2</carId>
+    <city>Houston</city>
+    <carType>Economy</carType>
+    <checkin>2024-09-10</checkin>
+    <checkout>2024-09-11</checkout>
+    <pricePerDay>50</pricePerDay>
+    <totalPrice>50</totalPrice>
+  </booking>
+  <booking>
+    <userId>user-1762743908855-241</userId>
+    <bookingNumber>1762751296954</bookingNumber>
+    <carId>1</carId>
+    <city>Austin</city>
+    <carType>Economy</carType>
+    <checkin>2024-10-15</checkin>
+    <checkout>2024-11-06</checkout>
+    <pricePerDay>45</pricePerDay>
+    <totalPrice>990</totalPrice>
+  </booking>
+  <booking>
+    <userId>user-1762743908855-241</userId>
+    <bookingNumber>1762751350315</bookingNumber>
+    <carId>1</carId>
+    <city>Austin</city>
+    <carType>Economy</carType>
+    <checkin>2024-10-15</checkin>
+    <checkout>2024-11-06</checkout>
+    <pricePerDay>45</pricePerDay>
+    <totalPrice>990</totalPrice>
+  </booking>
+  <booking>
+    <userId>user-1762743908855-241</userId>
+    <bookingNumber>1762751464066</bookingNumber>
+    <carId>1</carId>
+    <city>Austin</city>
+    <carType>SUV</carType>
+    <checkin>2024-10-24</checkin>
+    <checkout>2024-11-20</checkout>
+    <pricePerDay>45</pricePerDay>
+    <totalPrice>1215</totalPrice>
+  </booking>
+</bookings>

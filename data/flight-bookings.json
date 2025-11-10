@@ -73,5 +73,62 @@
         "type": "adult"
       }
     ]
+  },
+  {
+    "userId": "user-1762743908855-241",
+    "bookingNumber": "FL-1762751501156-7180",
+    "flightId": 6,
+    "origin": "Austin",
+    "destination": "Sacramento",
+    "departureDate": "2024-10-21",
+    "arrivalDate": "2024-10-21",
+    "departureTime": "16:00",
+    "arrivalTime": "19:15",
+    "adults": 1,
+    "children": 0,
+    "infants": 0,
+    "totalSeats": 1,
+    "totalPrice": 174,
+    "passengers": [
+      {
+        "firstName": "a",
+        "lastName": "a",
+        "dateOfBirth": "1111-11-11",
+        "ssn": "111-11-1111",
+        "type": "adult"
+      }
+    ]
+  },
+  {
+    "userId": "user-1762743908855-241",
+    "bookingNumber": "FL-1762751501157-9362",
+    "flightId": 12,
+    "origin": "Austin",
+    "destination": "Sacramento",
+    "departureDate": "2024-10-25",
+    "arrivalDate": "2024-10-25",
+    "departureTime": "18:45",
+    "arrivalTime": "22:45",
+    "adults": 1,
+    "children": 0,
+    "infants": 1,
+    "totalSeats": 2,
+    "totalPrice": 523.6,
+    "passengers": [
+      {
+        "firstName": "a",
+        "lastName": "a",
+        "dateOfBirth": "2222-22-22",
+        "ssn": "222-22-2222",
+        "type": "adult"
+      },
+      {
+        "firstName": "a",
+        "lastName": "a",
+        "dateOfBirth": "1111-11-11",
+        "ssn": "111-11-1111",
+        "type": "infant"
+      }
+    ]
   }
 ]

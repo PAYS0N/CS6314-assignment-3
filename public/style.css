@@ -109,6 +109,22 @@ body {
     padding-right: .25rem;
 }
 
+#cars-table {
+    border: 2px solid black;
+    border-collapse: collapse; /* Optional, but prevents double borders */
+}
+
+#cars-table td {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+}
+
+#cars-table th {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+}
+
+
 #side {
     padding: 5rem;
 
