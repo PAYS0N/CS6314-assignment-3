@@ -1,5 +1,6 @@
 window.onload = async function onwindowload() {
-    document.querySelector("#booking-button").addEventListener("click", completeBooking)
+    document.querySelector("#hotel-button").addEventListener("click", completeHotelBooking)
+    document.querySelector("#flight-button").addEventListener("click", completeFlightBooking)
 
     let cart = JSON.parse(sessionStorage.getItem('cart')) || [];
 
@@ -21,6 +22,25 @@ window.onload = async function onwindowload() {
                 element.infants
             );
             document.querySelector("#hotels-output").appendChild(htmlHotel);
+        }
+        if (element.type === "flight") {
+            revealFlightLabels();
+            const flightDetails = await getFlightDetails(element.flightId);
+            const htmlFlight = createFlightObj(
+                element.flightId,
+                flightDetails.origin,
+                flightDetails.destination,
+                flightDetails.departureDate,
+                flightDetails.arrivalDate,
+                flightDetails.departureTime,
+                flightDetails.arrivalTime,
+                flightDetails.price,
+                element.adults,
+                element.children,
+                element.infants,
+                element.adults+element.children+element.infants
+            );
+            document.querySelector("#flights-output").appendChild(htmlFlight);
         }
     }
 };
@@ -57,6 +77,7 @@ function createButtonCell(text) {
 
 function revealHotelLabels() {
     document.querySelector("#hotels-table").classList.remove("hidden")
+    document.querySelector("#hotel-button").classList.remove("hidden")
 }
 
 async function getHotelRooms(id) {
@@ -85,7 +106,7 @@ async function getHotels() {
     }
 }
 
-async function completeBooking() {
+async function completeHotelBooking() {
     let userId = sessionStorage.getItem('userId');
     if (!userId) {
         userId = 'user-' + Date.now() + '-' + Math.floor(Math.random() * 1000);
@@ -144,4 +165,53 @@ async function completeBooking() {
         console.error(err);
         alert('Error connecting to server.');
     }
+}
+
+async function getFlightDetails(id) {
+    try {
+        const response = await fetch('/api/flights')
+        const flights = await response.json()
+        return flights.find(flight => flight.flightId == id)
+
+        
+    } catch (err) {
+        console.error('Error fetching flights:', err)
+    }
+}
+
+function createFlightObj(id, origin, dest, depdate, arrdate, deptime, arrtime, price, seats, adults, children, infants) {
+    const trFlight = document.createElement('tr')
+    trFlight.appendChild(createTextCell(id))
+    trFlight.appendChild(createTextCell(origin))
+    trFlight.appendChild(createTextCell(dest))
+    trFlight.appendChild(createTextCell(depdate))
+    trFlight.appendChild(createTextCell(arrdate))
+    trFlight.appendChild(createTextCell(deptime))
+    trFlight.appendChild(createTextCell(arrtime))
+    trFlight.appendChild(createTextCell(price))
+    trFlight.appendChild(createTextCell(seats))
+    return trFlight
+}
+
+function createTextCell(text) {
+    const divText = document.createElement('td')
+    divText.textContent = text
+    return divText
+}
+
+function createButtonCell(text) {
+    const tdText = document.createElement('td')
+    const buttonText = document.createElement('button')
+    buttonText.textContent = text
+    tdText.appendChild(buttonText)
+    return tdText
+}
+
+function revealFlightLabels() {
+    document.querySelector("#flight-button").classList.remove("hidden")
+    document.querySelector("#flights-table").classList.remove("hidden")
+}
+
+function completeFlightBooking() {
+    alert("incomplete")
 }
