@@ -1,9 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <hotels>
   <hotel>
     <hotelId>1</hotelId>
     <name>Hotel Texas</name>
     <city>Austin</city>
-    <availableRooms>5</availableRooms>
+    <availableRooms>1</availableRooms>
     <date>2025-11-09</date>
     <pricePerNight>120</pricePerNight>
   </hotel>
@@ -107,7 +108,7 @@
     <hotelId>14</hotelId>
     <name>Omni Hotels</name>
     <city>Austin</city>
-    <availableRooms>7</availableRooms>
+    <availableRooms>3</availableRooms>
     <date>2025-11-09</date>
     <pricePerNight>125</pricePerNight>
   </hotel>

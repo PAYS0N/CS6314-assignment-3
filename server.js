@@ -34,6 +34,45 @@ app.get('/api/hotels', (req, res) => {
     });
 });
 
+app.post('/api/bookings', (req, res) => {
+    const bookings = req.body.bookings;
+
+    if (!bookings || !Array.isArray(bookings)) {
+        return res.status(400).json({ success: false, error: 'Invalid bookings data' });
+    }
+
+    //Save bookings to bookings.json
+    const bookingsFile = './data/bookings.json';
+    let existingBookings = [];
+    if (fs.existsSync(bookingsFile)) {
+        existingBookings = JSON.parse(fs.readFileSync(bookingsFile, 'utf8'));
+    }
+    const updatedBookings = existingBookings.concat(bookings);
+    fs.writeFileSync(bookingsFile, JSON.stringify(updatedBookings, null, 2));
+
+    //Update available rooms in hotels.xml
+    const xmlFile = './data/hotels.xml';
+    const xmlData = fs.readFileSync(xmlFile, 'utf8');
+
+    xml2js.parseString(xmlData, (err, result) => {
+        if (err) return res.status(500).json({ success: false, error: err.message });
+
+        bookings.forEach(booking => {
+            const hotel = result.hotels.hotel.find(h => h.hotelId[0] === booking.hotelId);
+            if (hotel) {
+                hotel.availableRooms[0] = (parseInt(hotel.availableRooms[0]) - booking.rooms).toString();
+            }
+        });
+
+        const builder = new xml2js.Builder();
+        const updatedXml = builder.buildObject(result);
+        fs.writeFileSync(xmlFile, updatedXml);
+    });
+
+    res.json({ success: true });
+});
+
+
 // Start server
 app.listen(PORT, () => {
     console.log(`Server running at http://localhost:${PORT}`);
