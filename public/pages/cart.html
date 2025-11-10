@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="js/js.js" defer></script>
-    <link rel="stylesheet" href="./style.css">
+    <script src="../js/js.js" defer></script>
+    <script src="../js/cart.js" defer></script>
+    <link rel="stylesheet" href="../style.css">
     <title>Document</title>
 </head>
 <body>
@@ -13,24 +14,49 @@
     </div>
 
     <div id="navbar">
-        <a href="./pages/stays.html" class="link">Stays</a>
-        <a href="./pages/flights.html" class="link">Flights</a>
-        <a href="./pages/cars.html" class="link">Cars</a>
-        <a href="./pages/cruises.html" class="link">Cruises</a>
-        <a href="./pages/book.html" class="link">Book</a>
-        <a href="./pages/contactUs.html" class="link">Contact Us</a>
-        <a href="./pages/cart.html" class="link">Cart</a>
+        <a href="../index.html" class="link">Home</a>
+        <a href="./stays.html" class="link">Stays</a>
+        <a href="./flights.html" class="link">Flights</a>
+        <a href="./cars.html" class="link">Cars</a>
+        <a href="./cruises.html" class="link">Cruises</a>
+        <a href="./book.html" class="link">Book</a>
+        <a href="./contactUs.html" class="link">Contact Us</a>
     </div>
 
     <div id="center">
         <div id="side"></div>
-        <div id="main">Welcome!</div>
+        <div id="main">
+            Cart
+            <table id="hotels-table" class="hidden">
+                <thead>
+                    <tr>
+                        Hotels
+                    </tr>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>City</th>
+                        <th>Check-in</th>
+                        <th>Check-out</th>
+                        <th>Adults</th>
+                        <th>Children</th>
+                        <th>Infants</th>
+                        <th>Rooms</th>
+                        <th>Price per room</th>
+                        <th>Total Price</th>
+                    </tr>
+                </thead>
+                <tbody id="hotels-output">
+                </tbody>
+            </table>
+        </div>
     </div>
 
     <div id="footer">
         <p>Payson Eberz, poe210000</p>
         <p>Nawaf Reaz, nxr210055</p>
         <p>Carlos Figueroa-Diaz, caf190007</p>
+
         <div id="time"></div>
         <div id="settings">
             View settings

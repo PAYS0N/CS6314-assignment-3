@@ -88,6 +88,11 @@ body {
     padding-right: .5rem;
 }
 
+#hotels-table th {
+    padding-left: .5rem;
+    padding-right: .5rem;
+}
+
 #side {
     padding: 5rem;
 
