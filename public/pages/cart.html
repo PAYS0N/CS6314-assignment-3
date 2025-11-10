@@ -6,7 +6,7 @@
     <script src="../js/js.js" defer></script>
     <script src="../js/cart.js" defer></script>
     <link rel="stylesheet" href="../style.css">
-    <title>Document</title>
+    <title>Booking Cart</title>
 </head>
 <body>
     <div id="header">
@@ -26,7 +26,9 @@
     <div id="center">
         <div id="side"></div>
         <div id="main">
-            Cart
+            <h2>Cart</h2>
+
+            <!-- Hotels Table -->
             <table id="hotels-table" class="hidden">
                 <thead>
                     <tr>
@@ -39,13 +41,31 @@
                         <th>Children</th>
                         <th>Infants</th>
                         <th>Rooms</th>
-                        <th>Price per room</th>
+                        <th>Price per Room</th>
                         <th>Total Price</th>
                     </tr>
                 </thead>
-                <tbody id="hotels-output">
+                <tbody id="hotels-tbody">
                 </tbody>
             </table>
+
+            <!-- Cars Table -->
+            <table id="cars-table" class="hidden">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>City</th>
+                        <th>Car Type</th>
+                        <th>Check-in</th>
+                        <th>Check-out</th>
+                        <th>Price per Day</th>
+                        <th>Total Price</th>
+                    </tr>
+                </thead>
+                <tbody id="cars-tbody">
+                </tbody>
+            </table>
+
             <button id="booking-button">Book</button>
         </div>
     </div>
