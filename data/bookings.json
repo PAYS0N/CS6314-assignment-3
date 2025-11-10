@@ -256,5 +256,37 @@
     "rooms": 1,
     "pricePerNight": "125",
     "totalPrice": 2625
+  },
+  {
+    "userId": "user-1762743908855-241",
+    "bookingNumber": 1762752260399,
+    "type": "hotel",
+    "hotelId": "1",
+    "hotelName": "Hotel Texas",
+    "city": "Austin",
+    "checkin": "2024-10-09",
+    "checkout": "2024-11-13",
+    "adults": "1",
+    "children": "2",
+    "infants": "1",
+    "rooms": 2,
+    "pricePerNight": "120",
+    "totalPrice": 8400
+  },
+  {
+    "userId": "user-1762743908855-241",
+    "bookingNumber": 1762752364347,
+    "type": "hotel",
+    "hotelId": "1",
+    "hotelName": "Hotel Texas",
+    "city": "Austin",
+    "checkin": "2024-10-16",
+    "checkout": "2024-11-13",
+    "adults": "1",
+    "children": "1",
+    "infants": "1",
+    "rooms": 1,
+    "pricePerNight": "120",
+    "totalPrice": 3360
   }
 ]

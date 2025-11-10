@@ -55,4 +55,37 @@
     <pricePerDay>45</pricePerDay>
     <totalPrice>1710</totalPrice>
   </booking>
+  <booking>
+    <userId>user-1762743908855-241</userId>
+    <bookingNumber>1762752260368</bookingNumber>
+    <carId>1</carId>
+    <city>Austin</city>
+    <carType>Compact</carType>
+    <checkin>2024-10-16</checkin>
+    <checkout>2024-10-30</checkout>
+    <pricePerDay>45</pricePerDay>
+    <totalPrice>630</totalPrice>
+  </booking>
+  <booking>
+    <userId>user-1762743908855-241</userId>
+    <bookingNumber>1762752363799</bookingNumber>
+    <carId>1</carId>
+    <city>Austin</city>
+    <carType>Compact</carType>
+    <checkin>2024-10-16</checkin>
+    <checkout>2024-11-13</checkout>
+    <pricePerDay>45</pricePerDay>
+    <totalPrice>1260</totalPrice>
+  </booking>
+  <booking>
+    <userId>user-1762743908855-241</userId>
+    <bookingNumber>1762752409864</bookingNumber>
+    <carId>5</carId>
+    <city>Austin</city>
+    <carType>Compact</carType>
+    <checkin>2024-10-09</checkin>
+    <checkout>2024-11-13</checkout>
+    <pricePerDay>60</pricePerDay>
+    <totalPrice>2100</totalPrice>
+  </booking>
 </bookings>

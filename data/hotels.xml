@@ -4,7 +4,7 @@
     <hotelId>1</hotelId>
     <name>Hotel Texas</name>
     <city>Austin</city>
-    <availableRooms>102</availableRooms>
+    <availableRooms>99</availableRooms>
     <date>2025-11-09</date>
     <pricePerNight>120</pricePerNight>
   </hotel>

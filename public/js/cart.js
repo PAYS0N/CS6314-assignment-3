@@ -98,9 +98,11 @@ function createTextCell(text) {
 
 function revealHotelLabels() {
     document.querySelector("#hotels-table").classList.remove("hidden")
+    document.querySelector("#hotels-label").classList.remove("hidden")
 }
 
 function revealCarLabels() {
+    document.querySelector("#cars-label").classList.remove("hidden")
     document.querySelector("#cars-table").classList.remove("hidden");
 }
 
@@ -233,6 +235,7 @@ function createButtonCell(text) {
 }
 
 function revealFlightLabels() {
+    document.querySelector("#flights-label").classList.remove("hidden")
     document.querySelector("#flight-button").classList.remove("hidden")
     document.querySelector("#flights-table").classList.remove("hidden")
 }
