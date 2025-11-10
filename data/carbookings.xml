@@ -88,4 +88,15 @@
     <pricePerDay>60</pricePerDay>
     <totalPrice>2100</totalPrice>
   </booking>
+  <booking>
+    <userId>user-1762743908855-241</userId>
+    <bookingNumber>1762753402346</bookingNumber>
+    <carId>1</carId>
+    <city>Austin</city>
+    <carType>Midsize</carType>
+    <checkin>2024-10-15</checkin>
+    <checkout>2024-10-16</checkout>
+    <pricePerDay>45</pricePerDay>
+    <totalPrice>45</totalPrice>
+  </booking>
 </bookings>

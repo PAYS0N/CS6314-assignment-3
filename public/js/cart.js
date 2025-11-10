@@ -269,7 +269,7 @@ async function completeFlightBooking() {
         // Collect info for adults
         for (let i = 0; i < flight.adults; i++) {
             const passenger = collectPassengerInfo(`Adult ${i + 1}`);
-            if (!passenger) return; // User cancelled
+            if (!passenger) return;
             passenger.type = 'adult';
             passengers.push(passenger);
         }
@@ -277,7 +277,7 @@ async function completeFlightBooking() {
         // Collect info for children
         for (let i = 0; i < flight.children; i++) {
             const passenger = collectPassengerInfo(`Child ${i + 1}`);
-            if (!passenger) return; // User cancelled
+            if (!passenger) return;
             passenger.type = 'child';
             passengers.push(passenger);
         }
@@ -285,7 +285,7 @@ async function completeFlightBooking() {
         // Collect info for infants
         for (let i = 0; i < flight.infants; i++) {
             const passenger = collectPassengerInfo(`Infant ${i + 1}`);
-            if (!passenger) return; // User cancelled
+            if (!passenger) return;
             passenger.type = 'infant';
             passengers.push(passenger);
         }
@@ -349,8 +349,10 @@ async function completeFlightBooking() {
             
             // Display booking confirmation
             let confirmationMsg = 'Flight booking successful!\n\n';
+            confirmationMsg += `User ID: ${userId}\n`;
             resolvedBookings.forEach(booking => {
                 confirmationMsg += `Booking Number: ${booking.bookingNumber}\n`;
+                confirmationMsg += `Flight ID: ${booking.flightId}\n`;
                 confirmationMsg += `Flight: ${booking.origin} to ${booking.destination}\n`;
                 confirmationMsg += `Departure: ${booking.departureDate} at ${booking.departureTime}\n`;
                 confirmationMsg += `Arrival: ${booking.arrivalDate} at ${booking.arrivalTime}\n`;
@@ -358,6 +360,8 @@ async function completeFlightBooking() {
                 confirmationMsg += `Passengers:\n`;
                 booking.passengers.forEach(p => {
                     confirmationMsg += `  - ${p.firstName} ${p.lastName} (${p.type})\n`;
+                    confirmationMsg += `  - ${p.ssn}\n`;
+                    confirmationMsg += `  - ${p.dateOfBirth}\n`;
                 });
                 confirmationMsg += '\n';
             });

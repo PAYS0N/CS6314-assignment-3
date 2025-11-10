@@ -4,7 +4,7 @@
     <hotelId>1</hotelId>
     <name>Hotel Texas</name>
     <city>Austin</city>
-    <availableRooms>99</availableRooms>
+    <availableRooms>97</availableRooms>
     <date>2025-11-09</date>
     <pricePerNight>120</pricePerNight>
   </hotel>
@@ -108,7 +108,7 @@
     <hotelId>14</hotelId>
     <name>Omni Hotels</name>
     <city>Austin</city>
-    <availableRooms>1090</availableRooms>
+    <availableRooms>1087</availableRooms>
     <date>2025-11-09</date>
     <pricePerNight>125</pricePerNight>
   </hotel>

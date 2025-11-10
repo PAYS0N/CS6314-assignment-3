@@ -288,5 +288,37 @@
     "rooms": 1,
     "pricePerNight": "120",
     "totalPrice": 3360
+  },
+  {
+    "userId": "user-1762743908855-241",
+    "bookingNumber": 1762753402134,
+    "type": "hotel",
+    "hotelId": "14",
+    "hotelName": "Omni Hotels",
+    "city": "Austin",
+    "checkin": "2024-10-16",
+    "checkout": "2024-11-13",
+    "adults": "5",
+    "children": "0",
+    "infants": "0",
+    "rooms": 3,
+    "pricePerNight": "125",
+    "totalPrice": 10500
+  },
+  {
+    "userId": "user-1762743908855-241",
+    "bookingNumber": 1762753402260,
+    "type": "hotel",
+    "hotelId": "1",
+    "hotelName": "Hotel Texas",
+    "city": "Austin",
+    "checkin": "2024-10-16",
+    "checkout": "2024-10-17",
+    "adults": "3",
+    "children": "0",
+    "infants": "1",
+    "rooms": 2,
+    "pricePerNight": "120",
+    "totalPrice": 240
   }
 ]
