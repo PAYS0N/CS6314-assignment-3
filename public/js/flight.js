@@ -118,7 +118,8 @@ async function displayAvailableFlights(flightDetails, passengerDetails) {
     const strDestName = destination.trim().split(",")[0]
     const jsonFlights = await getFlights()
 
-    let flightFound = false
+    let depFound = false
+    let retFound = false
     jsonFlights.forEach(flight => {
         // check if flight is available
         if (
@@ -127,7 +128,7 @@ async function displayAvailableFlights(flightDetails, passengerDetails) {
             flight.departureDate === departure &&
             flight.availableSeats >= adults + children + infants
         ) {
-            flightFound = addAFlight(flight, adults, children, infants, flight.origin === strOriginName)
+            depFound = addAFlight(flight, adults, children, infants, flight.origin === strOriginName)
         }
         if (
             flight.origin === strDestName &&
@@ -135,10 +136,10 @@ async function displayAvailableFlights(flightDetails, passengerDetails) {
             flight.departureDate === returnDate &&
             flight.availableSeats >= adults + children + infants
         ) {
-            flightFound = addAFlight(flight, adults, children, infants, flight.origin === strOriginName)
+            retFound = addAFlight(flight, adults, children, infants, flight.origin === strOriginName)
         }
     });
-    if (!flightFound) {
+    if (!depFound || !retFound) {
         jsonFlights.forEach(flight => {
             // check if flight is available
             const flightDate = new Date(flight.departureDate);
@@ -151,7 +152,7 @@ async function displayAvailableFlights(flightDetails, passengerDetails) {
                 Math.abs(flightDate - depDate) < 3 * 24 * 60 * 60 * 1000 &&
                 flight.availableSeats >= adults + children + infants
             ) {
-                flightFound = addAFlight(flight, adults, children, infants, flight.origin === strOriginName)
+                depFound = addAFlight(flight, adults, children, infants, flight.origin === strOriginName)
             }
             if (
                 flight.origin === strDestName &&
@@ -159,11 +160,11 @@ async function displayAvailableFlights(flightDetails, passengerDetails) {
                 retDate && Math.abs(flightDate - retDate) < 3 * 24 * 60 * 60 * 1000 &&
                 flight.availableSeats >= adults + children + infants
             ) {
-                flightFound = addAFlight(flight, adults, children, infants, flight.origin === strOriginName)
+                retFound = addAFlight(flight, adults, children, infants, flight.origin === strOriginName)
             }
         });
     }
-    if(!flightFound) {
+    if(!depFound || !retFound) {
         alert("No flights found")
     }
 

@@ -18,7 +18,7 @@
     "arrivalDate": "2024-10-16",
     "departureTime": "07:15",
     "arrivalTime": "11:00",
-    "availableSeats": 48,
+    "availableSeats": 47,
     "price": 364
   },
   {
@@ -425,7 +425,7 @@
     "arrivalDate": "2024-11-20",
     "departureTime": "18:00",
     "arrivalTime": "21:45",
-    "availableSeats": 91,
+    "availableSeats": 90,
     "price": 121
   },
   {
