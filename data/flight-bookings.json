@@ -1,0 +1,27 @@
+[
+  {
+    "userId": "user-1762743908855-241",
+    "bookingNumber": "FL-1762744043180-2174",
+    "flightId": 2,
+    "origin": "Austin",
+    "destination": "Sacramento",
+    "departureDate": "2024-10-16",
+    "arrivalDate": "2024-10-16",
+    "departureTime": "07:15",
+    "arrivalTime": "11:00",
+    "adults": 1,
+    "children": 0,
+    "infants": 0,
+    "totalSeats": 1,
+    "totalPrice": 364,
+    "passengers": [
+      {
+        "firstName": "a",
+        "lastName": "a",
+        "dateOfBirth": "1111-11-11",
+        "ssn": "111-11-1111",
+        "type": "adult"
+      }
+    ]
+  }
+]

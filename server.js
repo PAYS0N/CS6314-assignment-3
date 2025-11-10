@@ -72,6 +72,42 @@ app.post('/api/bookings', (req, res) => {
     res.json({ success: true });
 });
 
+app.post('/api/flight-bookings', (req, res) => {
+    const bookings = req.body.bookings;
+
+    if (!bookings || !Array.isArray(bookings)) {
+        return res.status(400).json({ success: false, error: 'Invalid bookings data' });
+    }
+
+    // Save flight bookings to flight-bookings.json
+    const flightBookingsFile = './data/flight-bookings.json';
+    let existingFlightBookings = [];
+    if (fs.existsSync(flightBookingsFile)) {
+        existingFlightBookings = JSON.parse(fs.readFileSync(flightBookingsFile, 'utf8'));
+    }
+    const updatedFlightBookings = existingFlightBookings.concat(bookings);
+    fs.writeFileSync(flightBookingsFile, JSON.stringify(updatedFlightBookings, null, 2));
+
+    // Update available seats in flights.json
+    const flightsFile = './data/flights.json';
+    const flightsData = JSON.parse(fs.readFileSync(flightsFile, 'utf8'));
+
+    bookings.forEach(booking => {
+        const flight = flightsData.find(f => f.flightId === booking.flightId);
+        if (flight) {
+            flight.availableSeats -= booking.totalSeats;
+            if (flight.availableSeats < 0) {
+                flight.availableSeats = 0;
+            }
+        }
+    });
+
+    fs.writeFileSync(flightsFile, JSON.stringify(flightsData, null, 2));
+
+    res.json({ success: true });
+});
+
+
 
 // Start server
 app.listen(PORT, () => {
