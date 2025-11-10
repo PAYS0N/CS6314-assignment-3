@@ -152,7 +152,8 @@ async function displayAvailableFlights(flightDetails, passengerDetails) {
             if (
                 flight.origin === strOriginName &&
                 flight.destination === strDestName &&
-                Math.abs(flightDate - depDate) < 3 * 24 * 60 * 60 * 1000 &&
+                Math.abs(flightDate - depDate) < 3 * 24 * 60 * 60 * 1000 && 
+                flight.departureDate != departure &&
                 flight.availableSeats >= adults + children + infants
             ) {
                 depFound = addAFlight(flight, adults, children, infants, flight.origin === strOriginName)
@@ -161,6 +162,7 @@ async function displayAvailableFlights(flightDetails, passengerDetails) {
                 flight.origin === strDestName &&
                 flight.destination === strOriginName &&
                 retDate && Math.abs(flightDate - retDate) < 3 * 24 * 60 * 60 * 1000 &&
+                flight.departureDate != returnDate &&
                 flight.availableSeats >= adults + children + infants
             ) {
                 retFound = addAFlight(flight, adults, children, infants, flight.origin === strOriginName)
