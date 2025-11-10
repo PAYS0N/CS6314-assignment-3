@@ -164,7 +164,7 @@ async function displayAvailableFlights(flightDetails, passengerDetails) {
             }
         });
     }
-    if(!depFound || !retFound) {
+    if(!depFound && !retFound) {
         alert("No flights found")
     }
 
