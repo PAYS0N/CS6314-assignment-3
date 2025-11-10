@@ -191,7 +191,7 @@ function createFlightObj(id, origin, dest, depdate, arrdate, deptime, arrtime, p
     trFlight.appendChild(createTextCell(arrdate))
     trFlight.appendChild(createTextCell(deptime))
     trFlight.appendChild(createTextCell(arrtime))
-    trFlight.appendChild(createTextCell(price*adults + price*children*.7 + price*infants*.1))
+    trFlight.appendChild(createTextCell(Math.round(10 *(price*adults + price*children*.7 + price*infants*.1))/10))
     return trFlight
 }
 
