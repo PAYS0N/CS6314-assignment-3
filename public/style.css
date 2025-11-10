@@ -86,13 +86,27 @@ body {
 }
 
 #hotels-table td {
-    padding-left: .5rem;
-    padding-right: .5rem;
+    padding-left: .25rem;
+    padding-right: .25rem;
 }
 
 #hotels-table th {
-    padding-left: .5rem;
-    padding-right: .5rem;
+    padding-left: .25rem;
+    padding-right: .25rem;
+}
+
+#flights-table {
+    border: 2px solid black;
+}
+
+#flights-table td {
+    padding-left: .25rem;
+    padding-right: .25rem;
+}
+
+#flights-table th {
+    padding-left: .25rem;
+    padding-right: .25rem;
 }
 
 #side {

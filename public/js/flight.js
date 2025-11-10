@@ -53,10 +53,12 @@ function submitBookForm(e) {
         }
         else {
             displayBookResults(origin, destination, departure, arrival)
+            return [origin, destination, departure, arrival]
         }
     }
     else {
         displayBookResults(origin, destination, departure, arrival)
+        return [origin, destination, departure, arrival]
     }
 }
 
@@ -74,8 +76,11 @@ function setupFlightListeners() {
     });
     
     document.querySelector("#flight-form").addEventListener("submit", (e) => {
-        submitBookForm(e)
-        submitFlightForm(e);
+        let flightDetails = submitBookForm(e) 
+        let passengerDetails = submitFlightForm(e) 
+        if ( flightDetails && passengerDetails) {
+            displayAvailableFlights(flightDetails, passengerDetails)
+        }
     });
 }
 
@@ -99,5 +104,115 @@ function submitFlightForm(e) {
     }
     else {
         displayFlightResults(adults, children, infants);
+        return [adults, children, infants]
     }
+}
+
+async function displayAvailableFlights(flightDetails, passengerDetails) {
+    let [origin, destination, departure, arrival] = flightDetails
+    let [adults, children, infants] = passengerDetails
+
+    document.querySelector("#flights-output").innerHTML = ""
+
+    const strOriginName = origin.trim().split(",")[0]
+    const strDestName = destination.trim().split(",")[0]
+    const jsonFlights = await getFlights()
+
+    jsonFlights.forEach(flight => {
+        // check if flight is available
+        if (
+            flight.origin === strOriginName &&
+            flight.destination === strDestName &&
+            flight.departureDate === departure &&
+            flight.availableSeats > 0
+        ) {
+            revealFlightLabels();
+
+            const htmlFlight = createFlightObj(
+                flight.flightId,
+                flight.origin,
+                flight.destination,
+                flight.departureDate,
+                flight.arrivalDate,
+                flight.departureTime,
+                flight.arrivalTime,
+                flight.price,
+                flight.availableSeats,
+                adults,
+                children,
+                infants
+            );
+
+            document.querySelector("#flights-output").appendChild(htmlFlight);
+        }
+    });
+
+}
+
+async function getFlights() {
+    try {
+        const response = await fetch('/api/flights')
+
+        return await response.json()
+    } catch (err) {
+        console.error('Error fetching flights:', err)
+    }
+}
+
+function createFlightObj(id, origin, dest, depdate, arrdate, deptime, arrtime, price, seats, adults, children, infants) {
+    const trFlight = document.createElement('tr')
+    trFlight.appendChild(createTextCell(id))
+    trFlight.appendChild(createTextCell(origin))
+    trFlight.appendChild(createTextCell(dest))
+    trFlight.appendChild(createTextCell(depdate))
+    trFlight.appendChild(createTextCell(arrdate))
+    trFlight.appendChild(createTextCell(deptime))
+    trFlight.appendChild(createTextCell(arrtime))
+    trFlight.appendChild(createTextCell(price))
+    trFlight.appendChild(createTextCell(seats))
+    const cartCell = createButtonCell("Add to cart")
+    cartCell.addEventListener("click", () => {
+        if (seats < adults+children+infants) {
+            alert("You require too many seats. Reduce guests or pick a different flight.")
+        }
+        else {
+            addFlightToCart(id, adults, children, infants)
+        }
+    })
+    trFlight.appendChild(cartCell)
+    return trFlight
+}
+
+function createTextCell(text) {
+    const divText = document.createElement('td')
+    divText.textContent = text
+    return divText
+}
+
+function createButtonCell(text) {
+    const tdText = document.createElement('td')
+    const buttonText = document.createElement('button')
+    buttonText.textContent = text
+    tdText.appendChild(buttonText)
+    return tdText
+}
+
+function revealFlightLabels() {
+    document.querySelector("#flights-table").classList.remove("hidden")
+}
+
+function addFlightToCart(id, adults, children, infants) {    
+    const cartItem = {
+        type: 'flight',
+        flightId: id,
+        adults: adults,
+        children: children,
+        infants: infants,
+    };
+    
+    let cart = JSON.parse(sessionStorage.getItem('cart')) || [];
+    cart.push(cartItem);
+    sessionStorage.setItem('cart', JSON.stringify(cart));
+
+    alert('Flight added to cart!');
 }
