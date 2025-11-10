@@ -47,6 +47,9 @@ function submitBookForm(e) {
     else if (!dateRegex.test(departure)) {
         alert("Must depart from Sep 1, 2024 to Dec 1st, 2024.")
     }
+    else if (new Date(departure) > new Date(returnDate)) {
+        alert("Must depart before return")
+    }
     else if (returnDate != "") {
         if (!dateRegex.test(returnDate)) {
             alert("Must return from Sep 1, 2024 to Dec 1st, 2024.")
