@@ -35,7 +35,7 @@ function submitBookForm(e) {
     const origin = formData.get("origin")
     const destination = formData.get("destination")
     const departure = formData.get("depart-date")
-    const arrival = formData.get("return-date")
+    const returnDate = formData.get("return-date")
     const dateRegex = /^(2024-(09|10|11)-[0-3][0-9]|2024-12-01)$/
     const cityRegex = /^[A-Za-z\s]+,\s*(TX|CA)$/
     if (!cityRegex.test(origin)) {
@@ -47,18 +47,18 @@ function submitBookForm(e) {
     else if (!dateRegex.test(departure)) {
         alert("Must depart from Sep 1, 2024 to Dec 1st, 2024.")
     }
-    else if (arrival != "") {
-        if (!dateRegex.test(arrival)) {
+    else if (returnDate != "") {
+        if (!dateRegex.test(returnDate)) {
             alert("Must return from Sep 1, 2024 to Dec 1st, 2024.")
         }
         else {
-            displayBookResults(origin, destination, departure, arrival)
-            return [origin, destination, departure, arrival]
+            displayBookResults(origin, destination, departure, returnDate)
+            return [origin, destination, departure, returnDate]
         }
     }
     else {
-        displayBookResults(origin, destination, departure, arrival)
-        return [origin, destination, departure, arrival]
+        displayBookResults(origin, destination, departure, returnDate)
+        return [origin, destination, departure, returnDate]
     }
 }
 
@@ -109,7 +109,7 @@ function submitFlightForm(e) {
 }
 
 async function displayAvailableFlights(flightDetails, passengerDetails) {
-    let [origin, destination, departure, arrival] = flightDetails
+    let [origin, destination, departure, returnDate] = flightDetails
     let [adults, children, infants] = passengerDetails
 
     document.querySelector("#flights-output").innerHTML = ""
@@ -118,35 +118,78 @@ async function displayAvailableFlights(flightDetails, passengerDetails) {
     const strDestName = destination.trim().split(",")[0]
     const jsonFlights = await getFlights()
 
+    let flightFound = false
     jsonFlights.forEach(flight => {
         // check if flight is available
         if (
             flight.origin === strOriginName &&
             flight.destination === strDestName &&
             flight.departureDate === departure &&
-            flight.availableSeats > 0
+            flight.availableSeats >= adults + children + infants
         ) {
-            revealFlightLabels();
-
-            const htmlFlight = createFlightObj(
-                flight.flightId,
-                flight.origin,
-                flight.destination,
-                flight.departureDate,
-                flight.arrivalDate,
-                flight.departureTime,
-                flight.arrivalTime,
-                flight.price,
-                flight.availableSeats,
-                adults,
-                children,
-                infants
-            );
-
-            document.querySelector("#flights-output").appendChild(htmlFlight);
+            flightFound = addAFlight(flight, adults, children, infants, flight.origin === strOriginName)
+        }
+        if (
+            flight.origin === strDestName &&
+            flight.destination === strOriginName &&
+            flight.departureDate === returnDate &&
+            flight.availableSeats >= adults + children + infants
+        ) {
+            flightFound = addAFlight(flight, adults, children, infants, flight.origin === strOriginName)
         }
     });
+    if (!flightFound) {
+        jsonFlights.forEach(flight => {
+            // check if flight is available
+            const flightDate = new Date(flight.departureDate);
+            const depDate = new Date(departure);
+            const retDate = (returnDate != "") ? new Date(returnDate) : null;
 
+            if (
+                flight.origin === strOriginName &&
+                flight.destination === strDestName &&
+                Math.abs(flightDate - depDate) < 3 * 24 * 60 * 60 * 1000 &&
+                flight.availableSeats >= adults + children + infants
+            ) {
+                flightFound = addAFlight(flight, adults, children, infants, flight.origin === strOriginName)
+            }
+            if (
+                flight.origin === strDestName &&
+                flight.destination === strOriginName &&
+                retDate && Math.abs(flightDate - retDate) < 3 * 24 * 60 * 60 * 1000 &&
+                flight.availableSeats >= adults + children + infants
+            ) {
+                flightFound = addAFlight(flight, adults, children, infants, flight.origin === strOriginName)
+            }
+        });
+    }
+    if(!flightFound) {
+        alert("No flights found")
+    }
+
+}
+
+function addAFlight(flight, adults, children, infants, isDepFlight) {
+    revealFlightLabels();
+
+    const htmlFlight = createFlightObj(
+        flight.flightId,
+        flight.origin,
+        flight.destination,
+        flight.departureDate,
+        flight.arrivalDate,
+        flight.departureTime,
+        flight.arrivalTime,
+        flight.price,
+        flight.availableSeats,
+        adults,
+        children,
+        infants,
+        isDepFlight
+    );
+
+    document.querySelector("#flights-output").appendChild(htmlFlight);
+    return true
 }
 
 async function getFlights() {
@@ -159,7 +202,7 @@ async function getFlights() {
     }
 }
 
-function createFlightObj(id, origin, dest, depdate, arrdate, deptime, arrtime, price, seats, adults, children, infants) {
+function createFlightObj(id, origin, dest, depdate, arrdate, deptime, arrtime, price, seats, adults, children, infants, isDepFlight) {
     const trFlight = document.createElement('tr')
     trFlight.appendChild(createTextCell(id))
     trFlight.appendChild(createTextCell(origin))
@@ -170,7 +213,7 @@ function createFlightObj(id, origin, dest, depdate, arrdate, deptime, arrtime, p
     trFlight.appendChild(createTextCell(arrtime))
     trFlight.appendChild(createTextCell(price))
     trFlight.appendChild(createTextCell(seats))
-    const cartCell = createButtonCell("Add to cart")
+    const cartCell = createButtonCell("Add " + (isDepFlight ? "Departure" : "Return") + " to cart")
     cartCell.addEventListener("click", () => {
         if (seats < adults+children+infants) {
             alert("You require too many seats. Reduce guests or pick a different flight.")
