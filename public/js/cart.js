@@ -3,6 +3,7 @@ window.onload = async function () {
 
     const cart = JSON.parse(sessionStorage.getItem("cart")) || [];
 
+    // Sets up the tables for booking
     for (const item of cart) {
         if (item.type === "hotel") {
             revealHotelLabels();
@@ -34,7 +35,7 @@ window.onload = async function () {
     }
 };
 
-// --- Create table rows ---
+// Hotel table properties
 function createHotelObj(id, name, city, checkin, checkout, pricePerNight, rooms, adults, children, infants) {
     const tr = document.createElement("tr");
     tr.appendChild(createTextCell(id));
@@ -54,6 +55,7 @@ function createHotelObj(id, name, city, checkin, checkout, pricePerNight, rooms,
     return tr;
 }
 
+// Car table properties
 function createCarObj(id, city, carType, checkin, checkout, pricePerDay) {
     const tr = document.createElement("tr");
     tr.appendChild(createTextCell(id));
@@ -69,7 +71,6 @@ function createCarObj(id, city, carType, checkin, checkout, pricePerDay) {
     return tr;
 }
 
-// --- Helper functions ---
 function createTextCell(text) {
     const td = document.createElement("td");
     td.textContent = text;
@@ -84,7 +85,7 @@ function revealCarLabels() {
     document.querySelector("#cars-table").classList.remove("hidden");
 }
 
-// --- Complete Booking ---
+// Grabs items from the cart, sends them to the json and xml for hotels and cars, and displays the booking numbers
 async function completeBooking() {
     const userId = sessionStorage.getItem("userId") || (() => {
         const id = "user-" + Date.now() + "-" + Math.floor(Math.random() * 1000);
@@ -99,7 +100,7 @@ async function completeBooking() {
     }
 
     const hotelBookings = [];
-    const carBookings = [];
+    const carbookings = [];
     const allBookingNumbers = []; // <-- collect all numbers here
 
     cart.forEach(item => {
@@ -128,7 +129,7 @@ async function completeBooking() {
         } else if (item.type === "car") {
             const days = (new Date(item.checkout) - new Date(item.checkin)) / (1000 * 60 * 60 * 24);
             const totalPrice = item.pricePerDay * days;
-            carBookings.push({
+            carbookings.push({
                 userId,
                 bookingNumber,
                 type: "car",
@@ -152,15 +153,15 @@ async function completeBooking() {
             });
         }
 
-        if (carBookings.length) {
+        if (carbookings.length) {
             await fetch("/api/carbookings", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ bookings: carBookings })
+                body: JSON.stringify({ bookings: carbookings })
             });
         }
 
-        // alert with all booking numbers
+        // Alert with all booking numbers
         sessionStorage.removeItem("cart");
         alert("Booking successful! Your booking numbers: " + allBookingNumbers.join(", "));
     } catch (err) {

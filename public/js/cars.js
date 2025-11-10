@@ -3,6 +3,7 @@ window.addEventListener("load", () => {
     setupContactListeners()
 });
 
+// DOM implementation of cars page
 function developDom() {
     const main = document.querySelector("#main")
     const form = document.createElement("form")
@@ -60,6 +61,7 @@ function makeStandardFormGroup(type, name, labeltext) {
     return group
 }
 
+// Car Options
 function makecarDropdown() {
     const group = document.createElement("div")
     group.classList.add("form-group")
@@ -71,16 +73,16 @@ function makecarDropdown() {
     select.id = "car-type"
     select.name = "car-type"
     const option1 = document.createElement("option")
-    option1.value = "economy"
+    option1.value = "Economy"
     option1.textContent = "Economy"
     const option2 = document.createElement("option")
-    option2.value = "suv"
+    option2.value = "SUV"
     option2.textContent = "SUV"
     const option3 = document.createElement("option")
-    option3.value = "compact"
+    option3.value = "Compact"
     option3.textContent = "Compact"
     const option4 = document.createElement("option")
-    option4.value = "midsize"
+    option4.value = "Midsize"
     option4.textContent = "Midsize"
     select.appendChild(option1)
     select.appendChild(option2)
@@ -90,12 +92,14 @@ function makecarDropdown() {
     return group
 }
 
+// Listener events for DOM
 function setupContactListeners() {
     document.querySelector('#cars-form').addEventListener("submit", (e) => {
         submitContactForm(e)
     })
 }
 
+// Same logic as hotels
 function isValidCity(city) {
     city = city.trim()
     const parts = city.split(",")
@@ -107,6 +111,7 @@ function isValidCity(city) {
     return false
 }
 
+// Same logic as hotels
 function isValidDate(dateStr) {
     const givenDate = new Date(dateStr)
     const startDate = new Date("2024-09-01")
@@ -114,11 +119,13 @@ function isValidDate(dateStr) {
     return givenDate >= startDate && givenDate <= endDate
 }
 
+// Print inputs on screen before car options are given
 function displayContactResults(c, t, chi, cho) {
     const outputDiv = document.querySelector("#cars-output")
     outputDiv.textContent = "City: " + c + "\nType: " + t + "\nCheck in: " + chi + "\nCheck Out: " + cho
 }
 
+// Displays inputted info and avaliable cars
 function submitContactForm(e) {
     e.preventDefault()
     const formData = new FormData(document.querySelector("#cars-form"));
@@ -145,6 +152,7 @@ function submitContactForm(e) {
     }
 }
 
+// Checks XML for cars fitting the input criteria
 async function displayAvailableCars(city, carType, checkin, checkout) {
     const tbody = document.querySelector("#cars-tbody");
     tbody.innerHTML = "";
@@ -187,6 +195,7 @@ async function displayAvailableCars(city, carType, checkin, checkout) {
     }
 }
 
+// Backend request for car information
 async function getCars() {
     try {
         const response = await fetch('/api/cars')
@@ -198,7 +207,7 @@ async function getCars() {
     }
 }
 
-
+// Formatted table for avaliable cars
 function createCarObj(id, city, carType, checkin, checkout, price) {
     const days = (new Date(checkout) - new Date(checkin)) / (1000 * 60 * 60 * 24);
     const totalPrice = price * days;
@@ -236,6 +245,7 @@ function revealCarLabels() {
     document.querySelector("#cars-table").classList.remove("hidden")
 }
 
+// Sends the selected car to the cart page
 function addCarToCart(id, city, carType, checkin, checkout, price) {    
     const cartItem = {
         type: 'car',

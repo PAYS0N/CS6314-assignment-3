@@ -20,7 +20,7 @@
     <hotelId>3</hotelId>
     <name>Hampton Inn</name>
     <city>Houston</city>
-    <availableRooms>10</availableRooms>
+    <availableRooms>7</availableRooms>
     <date>2025-11-09</date>
     <pricePerNight>95</pricePerNight>
   </hotel>

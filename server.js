@@ -44,17 +44,14 @@ app.get('/api/cars', (req, res) => {
 
 // POST endpoint to create a new car booking
 app.post('/api/carbookings', (req, res) => {
-    const bookings = req.body.bookings; // expects array of car bookings
-
+    const bookings = req.body.bookings; 
     if (!bookings || !Array.isArray(bookings)) {
         return res.status(400).json({ success: false, error: 'Invalid bookings data' });
     }
-
-    const xmlFile = './data/carBookings.xml';
+    const xmlFile = './data/carbookings.xml';
     const carsFile = './data/cars.xml';
     const builder = new xml2js.Builder();
-
-    // Read existing bookings or create empty root
+    // Read existing bookings 
     let existingBookings = { bookings: { booking: [] } };
     if (fs.existsSync(xmlFile)) {
         const xmlData = fs.readFileSync(xmlFile, 'utf8');
@@ -67,11 +64,9 @@ app.post('/api/carbookings', (req, res) => {
     const carsData = fs.readFileSync(carsFile, 'utf8');
     xml2js.parseString(carsData, (err, carsResult) => {
         if (err) return res.status(500).json({ success: false, error: err.message });
-
         bookings.forEach(booking => {
             // Add unique booking number
             booking.bookingNumber = Date.now() + Math.floor(Math.random() * 1000);
-
             // Add booking to carbookings.xml
             existingBookings.bookings.booking.push({
                 userId: booking.userId,
@@ -84,7 +79,6 @@ app.post('/api/carbookings', (req, res) => {
                 pricePerDay: booking.pricePerDay,
                 totalPrice: booking.totalPrice
             });
-
             // Update car's bookedPeriods in cars.xml
             const car = carsResult.cars.car.find(c => c.carId[0] === booking.carId);
             if (car) {
@@ -96,15 +90,12 @@ app.post('/api/carbookings', (req, res) => {
                 });
             }
         });
-
         // Save updated carbookings.xml
         const updatedBookingsXml = builder.buildObject(existingBookings);
         fs.writeFileSync(xmlFile, updatedBookingsXml);
-
         // Save updated cars.xml
         const updatedCarsXml = builder.buildObject(carsResult);
         fs.writeFileSync(carsFile, updatedCarsXml);
-
         res.json({ success: true, bookingNumbers: bookings.map(b => b.bookingNumber) });
     });
 });
@@ -112,11 +103,9 @@ app.post('/api/carbookings', (req, res) => {
 
 app.post('/api/bookings', (req, res) => {
     const bookings = req.body.bookings;
-
     if (!bookings || !Array.isArray(bookings)) {
         return res.status(400).json({ success: false, error: 'Invalid bookings data' });
     }
-
     //Save bookings to bookings.json
     const bookingsFile = './data/bookings.json';
     let existingBookings = [];
@@ -125,26 +114,22 @@ app.post('/api/bookings', (req, res) => {
     }
     const updatedBookings = existingBookings.concat(bookings);
     fs.writeFileSync(bookingsFile, JSON.stringify(updatedBookings, null, 2));
-
     //Update available rooms in hotels.xml
     const xmlFile = './data/hotels.xml';
     const xmlData = fs.readFileSync(xmlFile, 'utf8');
 
     xml2js.parseString(xmlData, (err, result) => {
         if (err) return res.status(500).json({ success: false, error: err.message });
-
         bookings.forEach(booking => {
             const hotel = result.hotels.hotel.find(h => h.hotelId[0] === booking.hotelId);
             if (hotel) {
                 hotel.availableRooms[0] = (parseInt(hotel.availableRooms[0]) - booking.rooms).toString();
             }
         });
-
         const builder = new xml2js.Builder();
         const updatedXml = builder.buildObject(result);
         fs.writeFileSync(xmlFile, updatedXml);
     });
-
     res.json({ success: true });
 });
 
