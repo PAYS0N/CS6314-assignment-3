@@ -38,7 +38,6 @@ window.onload = async function onwindowload() {
                 element.adults,
                 element.children,
                 element.infants,
-                element.adults+element.children+element.infants
             );
             document.querySelector("#flights-output").appendChild(htmlFlight);
         }
@@ -113,7 +112,10 @@ async function completeHotelBooking() {
         sessionStorage.setItem('userId', userId);
     }
 
-    const cart = JSON.parse(sessionStorage.getItem('cart')) || [];
+    let cart = JSON.parse(sessionStorage.getItem('cart')) || [];
+    remainingCart = cart.filter(item => item.type != 'hotel');
+    cart = cart.filter(item => item.type === 'hotel');
+
 
     if (cart.length === 0) {
         alert("Cart is empty!");
@@ -156,8 +158,9 @@ async function completeHotelBooking() {
         const result = await response.json();
 
         if (result.success) {
-            sessionStorage.removeItem('cart');
+            sessionStorage.setItem('cart', JSON.stringify(remainingCart));
             alert('Booking successful! Your booking numbers: ' + bookings.map(b => b.bookingNumber).join(', '));
+            window.location.reload();
         } else {
             alert('Booking failed: ' + result.error);
         }
@@ -179,7 +182,7 @@ async function getFlightDetails(id) {
     }
 }
 
-function createFlightObj(id, origin, dest, depdate, arrdate, deptime, arrtime, price, seats, adults, children, infants) {
+function createFlightObj(id, origin, dest, depdate, arrdate, deptime, arrtime, price, adults, children, infants) {
     const trFlight = document.createElement('tr')
     trFlight.appendChild(createTextCell(id))
     trFlight.appendChild(createTextCell(origin))
@@ -188,8 +191,7 @@ function createFlightObj(id, origin, dest, depdate, arrdate, deptime, arrtime, p
     trFlight.appendChild(createTextCell(arrdate))
     trFlight.appendChild(createTextCell(deptime))
     trFlight.appendChild(createTextCell(arrtime))
-    trFlight.appendChild(createTextCell(price))
-    trFlight.appendChild(createTextCell(seats))
+    trFlight.appendChild(createTextCell(price*adults + price*children*.7 + price*infants*.1))
     return trFlight
 }
 
